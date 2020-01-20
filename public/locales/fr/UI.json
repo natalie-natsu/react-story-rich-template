@@ -1,0 +1,69 @@
+{
+  "Drawer":{
+    "title":"react-story-rich",
+    "titleScreen":"Écran d'acceuil",
+    "settings":"Paramètres"
+  },
+  "Navigation":{
+    "characters":"Personnages",
+    "inventory":"Inventaire",
+    "journal":"Journal",
+    "menu":"Menu"
+  },
+  "Play":{
+    "toggleDrawer":"Ouvrir le menu",
+    "start":"Démarrer l'aventure"
+  },
+  "Settings":{
+    "title":"Paramètres",
+    "subheader":"Changer à tout moment sans affecter le cours du jeu",
+    "goBack":"Retour",
+    "inGame":{
+      "title":"Paramètres de jeu",
+      "subheader":"Les retrouver aussi via l'interface du jeu"
+    },
+    "volume":{
+      "title":"Paramètres audio",
+      "subheader":"Régler les volumes des différents type d'audio"
+    },
+    "Inputs":{
+      "Audio":{
+        "label":"Audio",
+        "helperText":"Activer ou désactiver tous les sons du jeu"
+      },
+      "DarkMode":{
+        "label":"Mode sombre",
+        "helperText":"Activer ou désactiver le mode sombre"
+      },
+      "Hints":{
+        "label":"Indices",
+        "helperText":"Activer ou désactiver les indices qui apparaissent lors de choix importants"
+      },
+      "TableTopMode":{
+        "label":"Mode jeu de rôle",
+        "helperText":"Activer ou désactiver le mode jeu de rôle qui affiche les résultats des « lancés de dés » et autres informations concernant la prise de décision."
+      },
+      "SoundVolume":{
+        "label":"Sons & environnement"
+      },
+      "MusicVolume":{
+        "label":"Musiques & ambiance"
+      },
+      "DialogVolume":{
+        "label":"Dialogues"
+      }
+    }
+  },
+  "TitleScreen":{
+    "title":"react-story-rich",
+    "subheader":"Create flexible narrative games with javascript basics.",
+    "play":"Nouvelle partie",
+    "keepPlaying":"Continuer",
+    "settings":"Éditer les paramètres",
+    "credits":"Voir les crédits",
+    "quit":"Quitter le jeu",
+    "mute":"Activer ou désactiver les sons",
+    "darkMode":"Activer ou désactiver le mode sombre",
+    "sources":"Voir le code source sur GitHub"
+  }
+}

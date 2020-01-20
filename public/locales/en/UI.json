@@ -1,0 +1,69 @@
+{
+  "Drawer":{
+    "title":"react-story-rich",
+    "titleScreen":"Title screen",
+    "settings":"Settings"
+  },
+  "Navigation":{
+    "characters":"Characters",
+    "inventory":"Inventory",
+    "journal":"Journal",
+    "menu":"Menu"
+  },
+  "Play":{
+    "toggleDrawer":"Toggle drawer",
+    "start":"Begin your journey"
+  },
+  "Settings":{
+    "title":"Settings",
+    "subheader":"Change at any time without altering the game",
+    "goBack":"Go back",
+    "inGame":{
+      "title":"In game settings",
+      "subheader":"Also find them in the game menu"
+    },
+    "volume":{
+      "title":"Audio settings",
+      "subheader":"Edit volumes of each audio types"
+    },
+    "Inputs":{
+      "Audio":{
+        "label":"Audio",
+        "helperText":"Turn all game sounds on or off"
+      },
+      "DarkMode":{
+        "label":"Dark mode",
+        "helperText":"Turn dark mode on or off"
+      },
+      "Hints":{
+        "label":"Hints",
+        "helperText":"Activate or deactivate the clues that appear during important choices"
+      },
+      "TableTopMode":{
+        "label":"Table top mode",
+        "helperText":"Activate or deactivate the table top mode which displays the results of « rolls of dice » and other information regarding decision making."
+      },
+      "SoundVolume":{
+        "label":"Sounds & environment"
+      },
+      "MusicVolume":{
+        "label":"Music & ambience"
+      },
+      "DialogVolume":{
+        "label":"Dialogs"
+      }
+    }
+  },
+  "TitleScreen":{
+    "title":"react-story-rich",
+    "subheader":"Create flexible narrative games with javascript basics.",
+    "play":"New game",
+    "keepPlaying":"Continue",
+    "settings":"Edit settings",
+    "credits":"See credits",
+    "quit":"Quit the game",
+    "mute":"Toggle all audio events",
+    "darkMode":"Toggle light/dark theme",
+    "sources":"See sources on GitHub"
+  }
+}

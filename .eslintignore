@@ -1,0 +1,6 @@
+/.git
+build
+node_modules
+.idea
+serviceWorker.js
+setupTests.js

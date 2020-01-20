@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'ReBucked';
+    src: local('ReBucked'), url(./assets/rebucked.ttf) format('truetype');
+}
+
+body {
+    margin: 0;
+}
