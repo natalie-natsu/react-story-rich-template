@@ -11,12 +11,12 @@ import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import Typography from '@material-ui/core/Typography';
 
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import HomeIcon from '@material-ui/icons/Home';
 import SettingsIcon from '@material-ui/icons/Settings';
 
+import ProjectName from 'components/ProjectName';
 import Audio from 'components/Settings/Inputs/Audio';
 import DarkMode from 'components/Settings/Inputs/DarkMode';
 import Hints from 'components/Settings/Inputs/Hints';
@@ -36,9 +36,6 @@ const useStyles = makeStyles((theme) => ({
   iconButton: {
     marginLeft: theme.spacing(1),
   },
-  projectName: {
-    fontFamily: 'ReBucked',
-  },
 }));
 
 const NAME = 'Drawer';
@@ -56,7 +53,7 @@ function Drawer({ open, toggle, ...rest }) {
     >
       <div className={classes.list} role="presentation">
         <div className={classes.toolbar}>
-          <Typography className={classes.projectName}>{t(`${NAME}.title`)}</Typography>
+          <ProjectName />
           <IconButton onClick={toggle(false)} className={classes.iconButton}>
             <ChevronLeftIcon />
           </IconButton>

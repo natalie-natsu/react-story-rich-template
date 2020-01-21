@@ -8,6 +8,9 @@ import XHR from 'i18next-xhr-backend';
 import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 
+import Backdrop from '@material-ui/core/Backdrop';
+import CircularProgress from '@material-ui/core/CircularProgress';
+
 import App from 'App';
 import Store from 'store';
 
@@ -40,7 +43,7 @@ i18n
   });
 
 ReactDOM.render(
-  <Suspense fallback="Loading...">
+  <Suspense fallback={<Backdrop open><CircularProgress color="inherit" /></Backdrop>}>
     <Store>
       <App />
     </Store>

@@ -30,6 +30,7 @@ import Brightness4Icon from '@material-ui/icons/Brightness4';
 import Brightness7Icon from '@material-ui/icons/Brightness7';
 import CodeIcon from '@material-ui/icons/Code';
 import { updateSettings } from '../../store/settings';
+import ProjectName from '../ProjectName';
 
 export const NAME = 'TitleScreen';
 
@@ -40,9 +41,6 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     width: '100%',
     minHeight: `calc(100vh - ${theme.spacing(4) * 2}px)`,
-  },
-  projectName: {
-    fontFamily: 'ReBucked',
   },
   card: {
     marginTop: theme.spacing(3),
@@ -78,16 +76,13 @@ function TitleScreen({ audio, currentLocation, darkMode, dispatch }) {
     <Fade in className={classes.root}>
       <div className="TitleScreen">
         <Container maxWidth="sm">
-          <Typography
+          <ProjectName
             component="h1"
             variant="h3"
             color="textPrimary"
             align="center"
-            className={classes.projectName}
             gutterBottom
-          >
-            {t(`${NAME}.title`)}
-          </Typography>
+          />
           <Typography
             variant="h6"
             color="textSecondary"

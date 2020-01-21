@@ -1,6 +1,5 @@
 {
   "Drawer":{
-    "title":"react-story-rich",
     "titleScreen":"Title screen",
     "settings":"Settings"
   },
@@ -14,6 +13,7 @@
     "toggleDrawer":"Toggle drawer",
     "start":"Begin your journey"
   },
+  "ProjectName": "react-story-rich",
   "Settings":{
     "title":"Settings",
     "subheader":"Change at any time without altering the game",
@@ -55,7 +55,6 @@
     }
   },
   "TitleScreen":{
-    "title":"react-story-rich",
     "subheader":"Create flexible narrative games with javascript basics.",
     "play":"New game",
     "keepPlaying":"Continue",
