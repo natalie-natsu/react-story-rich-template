@@ -1,6 +1,4 @@
-import React from 'react';
-import { Element } from '@react-story-rich/core';
-import ProjectName from '../../components/ProjectName';
+import ButtonElement from 'components/Element/Button';
 
 const Intro = ['Intro', [
   `Aussi grande soit-elle, chaque civilisation est vouée à disparaître
@@ -21,46 +19,41 @@ const Intro = ['Intro', [
    et les conséquences de vos actions vous mèneront sur bien des chemins.`,
 
   {
-    component: Element,
-    children: (
-      <ProjectName
-        component="h1"
-        variant="h3"
-        color="textPrimary"
-        align="center"
-        gutterBottom
-      />
-    ),
+    component: ButtonElement,
+    children: 'My super project',
+    fontFamily: 'Rebucked',
+    fontSize: 'xl',
+    color: 'primary',
     onTap: ({ goForward }) => goForward(),
   },
 
   `Ici débute donc votre histoire.`,
 
-  `Ce vieux temple est votre prison depuis une éternité.
+  `Je vous le confirme, ce vieux temple est votre prison depuis une éternité.
   Vous le savez au fond d'une jungle, dense et magique.`,
 
-  `Vous le savez votre tombeau, celui de votre ancienne vie, que vous avez volontairement oublié.
-  Mais les traces demeures toujours. Ce sont les première à vous faire sentir parmi les sens qui vous sont innés.`,
+  `Il est votre tombeau même ! Celui de votre ancienne vie, que vous avez volontairement oublié.
+  Mais les traces demeures toujours. Ce sont les première qui se font sentir parmi tout ce qui vous est inné.`,
 
-  `Puis vous entendez le craquement de la pierre qui se dérobe devant vous.
-  Une lumière vient intensément vous éblouir et vous sortir définitivement de ce long sommeil.
+  `Vous entendez le craquement de la pierre qui se dérobe devant vous.
+  Une lumière vient alors intensément vous éblouir et vous sortir définitivement de ce long sommeil.
   Vous la sentez aussi sur votre coprs, nu, comme si vous n'aviez jamais goûté à la vie.`,
 
-  `En dernier, c'est l'air qui s'occupe de vous. Il vous fouette,
-  comme s'il se vangeait de ne jamais avoir pu vouus toucher durant toutes ces années, ou ces millénaires même !`,
+  `Mais c'est l'air qui vous agresse le plus. Il vous fouette,
+  comme s'il se vangeait de ne jamais avoir pu vouus toucher durant toutes ces années !
+  Ou ces millénaires, qui sait ?`,
 
   `Vous n'avez aucune notion du temps, vos repères sont inexistants, tout est sombre ou néant.
   Vous êtes étrangère à ce que vous vivez, mais vous le savez dangereux et cela vous rend nerveuse.`,
 
   {
-    children: `La panique s'intalle progressivement, comme pour un enfant qui vient de naître, que vous arrive-t-il ?
-    Vous pouriez vous levez pour ne plus être aveuglée par cette lumière qui tombe sur votre nez.
-    Vous pouvez aussi de mettre en garde ou d'avertir ce qui manifestant est venu pour vous.
-    Dernière possibilité est de puisez d'en votre instinct primaire pour vous protéger.`,
+    children: `Il est temps d'agir, avant que la panique ne s'installe et vous fasse perdre vos moyens.
+    Hélas, démunié, vous n'avez guère de plans. Que voulez-vous faire ?`,
+    hint: `Mettre en garde ce qui est venu vous chercher est sans doute la meilleure option,
+    mais vous pourriez aussi essayer de puisez dans votre instinct primaire pour des résultats plus divers.`,
     actions: [
-      { children: `Se léver` },
       { children: `Mettre en garde` },
-      { children: `Puiser dans votre instinct` },
+      { children: `Puiser dans l'instinct` },
     ],
   },
 ]];

@@ -5,23 +5,18 @@ import { connect } from 'react-redux';
 import clsx from 'clsx';
 
 import { SnackbarProvider } from 'notistack';
-import { useTranslation } from 'react-i18next';
 
 import { Story, Tree } from '@react-story-rich/core';
-import CardElement from '@react-story-rich/ui/components/CardElement';
 import mapStateToProps from '@react-story-rich/core/reducers/mapStateToProps';
 
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Container from '@material-ui/core//Container';
-import Fab from '@material-ui/core/Fab';
-import Box from '@material-ui/core/Box';
 
-import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
-
+import DefaultElement from 'components/Element/Default';
 import Drawer from 'components/Drawer';
 import Navigation from 'components/Navigation';
-import HideOnScroll from 'components/HideOnScroll';
+import ScrollToBottom from 'components/ScrollToBottom';
 
 import tree from 'tree';
 
@@ -42,21 +37,11 @@ const useStyles = makeStyles((theme) => ({
   navigation: {
     width: '100vw',
   },
-  topBox: {
-    position: 'fixed',
-    width: '100vw',
-    zIndex: 1,
-    top: theme.spacing(2),
-  },
 }));
-
-const NAME = 'Play';
 
 function Play({ dispatch, history }) {
   const ref = useRef(null);
-
   const classes = useStyles();
-  const { t } = useTranslation('UI');
 
   const [drawerState, setDrawerState] = useState({ open: false });
   const toggleDrawer = useCallback((open = !drawerState.open) => (event) => {
@@ -64,39 +49,18 @@ function Play({ dispatch, history }) {
     setDrawerState({ open });
   }, [drawerState.open]);
 
-  const scrollToBottom = useCallback(() => {
-    window.scrollTo({
-      top: ref.current.offsetTop + ref.current.offsetHeight,
-      behavior: 'smooth',
-    });
-  }, [ref]);
-
   const root = useMemo(() => new Tree(tree), []);
 
   return (
     <SnackbarProvider maxSnack={3}>
       <div ref={ref} className={clsx('Game', classes.root)}>
         <Drawer open={drawerState.open} toggle={toggleDrawer} />
-        <HideOnScroll>
-          <Box className={classes.topBox}>
-            <Container maxWidth="sm">
-              <Box display="flex" justifyContent="center">
-                <Fab
-                  color="primary"
-                  aria-label={t(`${NAME}.goDown`)}
-                  onClick={scrollToBottom}
-                >
-                  <KeyboardArrowDownIcon />
-                </Fab>
-              </Box>
-            </Container>
-          </Box>
-        </HideOnScroll>
+        <ScrollToBottom targetRef={ref} />
         <Container maxWidth="sm">
           <Story
             dispatch={dispatch}
             history={history}
-            nodeComponent={CardElement}
+            nodeComponent={DefaultElement}
             tree={root}
           />
         </Container>

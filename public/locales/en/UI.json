@@ -9,10 +9,7 @@
     "journal": "Journal",
     "menu": "Menu"
   },
-  "ProjectName": "react-story-rich",
-  "Play": {
-    "goDown": "Go down"
-  },
+  "ProjectName": "My Super Project",
   "Settings": {
     "title": "Settings",
     "subheader": "Change them at any time without altering the game",
@@ -62,6 +59,9 @@
         "label": "Dialogs"
       }
     }
+  },
+  "ScrollToBottom": {
+    "goDown": "Go down"
   },
   "TitleScreen": {
     "subheader": "Create flexible narrative games with javascript basics.",

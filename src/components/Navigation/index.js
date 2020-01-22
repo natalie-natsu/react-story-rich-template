@@ -5,7 +5,7 @@ import { Link, useLocation, matchPath } from 'react-router-dom';
 
 import findIndex from 'lodash/findIndex';
 
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
@@ -17,14 +17,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 
 const NAME = 'Navigation';
 
-const useStyles = makeStyles((theme) => ({
-  menu: {
-    color: theme.palette.secondary.main,
-  },
-}));
-
 function Navigation({ icons, onMenuClick, paths, rootPath, ...rest }) {
-  const classes = useStyles();
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up('sm'));
 
@@ -57,7 +50,6 @@ function Navigation({ icons, onMenuClick, paths, rootPath, ...rest }) {
         })}
         {(onMenuClick && matches) ? (
           <BottomNavigationAction
-            className={classes.menu}
             label={t(`${NAME}.menu`)}
             icon={<MenuIcon />}
             onClick={onMenuClick}

@@ -23,8 +23,8 @@ i18n
   .init({
     debug: true,
     defaultNS: 'UI',
-    fallbackLng: 'en', // use en if detected lng is not available
-    saveMissing: true, // send not translated keys to endpoint
+    whitelist: ['fr', 'en'],
+    fallbackLng: 'en',
 
     interpolation: {
       escapeValue: false, // not needed for react!!
