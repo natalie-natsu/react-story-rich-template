@@ -4,7 +4,7 @@
     "settings":"Paramètres"
   },
   "Navigation":{
-    "characters":"Personnages",
+    "characters":"Compagnons",
     "inventory":"Inventaire",
     "journal":"Journal",
     "menu":"Menu"
@@ -16,17 +16,27 @@
   "ProjectName": "react-story-rich",
   "Settings":{
     "title":"Paramètres",
-    "subheader":"Changer à tout moment sans affecter le cours du jeu",
+    "subheader":"Changez-les à tout moment sans affecter le cours du jeu",
     "goBack":"Retour",
+    "text":{
+      "title":"Paramètres de texte",
+      "subheader":"Concerne la lecture et le theme"
+    },
     "inGame":{
       "title":"Paramètres de jeu",
-      "subheader":"Les retrouver aussi via l'interface du jeu"
+      "subheader":"Concerne tout ce qui affecte à la jouabilité"
     },
     "volume":{
       "title":"Paramètres audio",
-      "subheader":"Régler les volumes des différents type d'audio"
+      "subheader":"Concerne les volumes des différents type d'audio"
     },
     "Inputs":{
+      "Language":{
+        "label":"Langue",
+        "helperText":"Sélectionner votre langue (par défaut celle de votre navigateur)",
+        "en": "English",
+        "fr": "Français"
+      },
       "Audio":{
         "label":"Audio",
         "helperText":"Activer ou désactiver tous les sons du jeu"

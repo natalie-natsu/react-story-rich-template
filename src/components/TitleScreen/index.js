@@ -6,7 +6,8 @@ import { Link } from 'react-router-dom';
 
 import last from 'lodash/last';
 
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Fade from '@material-ui/core/Fade';
 import Container from '@material-ui/core/Container';
 import Card from '@material-ui/core/Card';
@@ -29,8 +30,11 @@ import VolumeOffIcon from '@material-ui/icons/VolumeOff';
 import Brightness4Icon from '@material-ui/icons/Brightness4';
 import Brightness7Icon from '@material-ui/icons/Brightness7';
 import CodeIcon from '@material-ui/icons/Code';
-import { updateSettings } from '../../store/settings';
-import ProjectName from '../ProjectName';
+
+import { updateSettings } from 'store/settings';
+
+import ProjectName from 'components/ProjectName';
+import Language from 'components/Settings/Inputs/Language';
 
 export const NAME = 'TitleScreen';
 
@@ -49,10 +53,27 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(1),
     marginLeft: theme.spacing(1),
   },
+  language: {
+    marginTop: theme.spacing(2),
+    maxWidth: '160px',
+    overflow: 'hidden',
+    [theme.breakpoints.up('sm')]: {
+      maxWidth: '320px',
+    },
+  },
+  playIcon: {
+    backgroundColor: theme.palette.primary.main,
+  },
+  flexGrow: {
+    flexGrow: 1,
+  },
 }));
 
 function TitleScreen({ audio, currentLocation, darkMode, dispatch }) {
   const classes = useStyles();
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up('sm'));
+
   const { t } = useTranslation('UI');
 
   const newGame = useMemo(() => currentLocation === 0, [currentLocation]);
@@ -81,7 +102,6 @@ function TitleScreen({ audio, currentLocation, darkMode, dispatch }) {
             variant="h3"
             color="textPrimary"
             align="center"
-            gutterBottom
           />
           <Typography
             variant="h6"
@@ -94,7 +114,7 @@ function TitleScreen({ audio, currentLocation, darkMode, dispatch }) {
             <List component="nav">
               <ListItem button component={Link} to="/play">
                 <ListItemAvatar>
-                  <Avatar>
+                  <Avatar className={classes.playIcon}>
                     {playIcon}
                   </Avatar>
                 </ListItemAvatar>
@@ -126,17 +146,21 @@ function TitleScreen({ audio, currentLocation, darkMode, dispatch }) {
               </ListItem>
             </List>
           </Card>
-          <Box className={classes.actions} display="flex" justifyContent="flex-end">
-            <IconButton
-              className={classes.action}
-              component="a"
-              href="https://github.com/WaSa42/react-story-rich"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={t(`${NAME}.sources`)}
-            >
-              <CodeIcon />
-            </IconButton>
+          <Box display="flex">
+            <Language className={classes.language} size="small" variant="outlined" color="default" />
+            <span className={classes.flexGrow} />
+            {matches && (
+              <IconButton
+                className={classes.action}
+                component="a"
+                href="https://github.com/WaSa42/react-story-rich"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={t(`${NAME}.sources`)}
+              >
+                <CodeIcon />
+              </IconButton>
+            )}
             <IconButton
               className={classes.action}
               aria-label={t(`${NAME}.darkMode`)}

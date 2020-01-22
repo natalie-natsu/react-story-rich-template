@@ -4,7 +4,7 @@
     "settings":"Settings"
   },
   "Navigation":{
-    "characters":"Characters",
+    "characters":"Companions",
     "inventory":"Inventory",
     "journal":"Journal",
     "menu":"Menu"
@@ -16,17 +16,27 @@
   "ProjectName": "react-story-rich",
   "Settings":{
     "title":"Settings",
-    "subheader":"Change at any time without altering the game",
+    "subheader":"Change them at any time without altering the game",
     "goBack":"Go back",
+    "text":{
+      "title":"Text settings",
+      "subheader":"Concerns reading and theme"
+    },
     "inGame":{
       "title":"In game settings",
-      "subheader":"Also find them in the game menu"
+      "subheader":"Concerns specific game behaviors"
     },
     "volume":{
       "title":"Audio settings",
       "subheader":"Edit volumes of each audio types"
     },
     "Inputs":{
+      "Language":{
+        "label":"Language",
+        "helperText":"Select your language (default is the one of your browser)",
+        "en": "English",
+        "fr": "Français"
+      },
       "Audio":{
         "label":"Audio",
         "helperText":"Turn all game sounds on or off"

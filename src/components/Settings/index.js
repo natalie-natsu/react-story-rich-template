@@ -12,6 +12,8 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import Button from '@material-ui/core/Button';
 
+import Language from './Inputs/Language';
+
 import Audio from './Inputs/Audio';
 import DarkMode from './Inputs/DarkMode';
 import Hints from './Inputs/Hints';
@@ -64,10 +66,17 @@ function Settings() {
           {t(`${NAME}.subheader`)}
         </Typography>
         <Card className={classes.card}>
+          <CardHeader title={t(`${NAME}.text.title`)} subheader={t(`${NAME}.text.subheader`)} />
+          <List disablePadding>
+            <ListItem className={classes.listItem} divider>
+              <Language displayHelperText fullWidth />
+            </ListItem>
+            <ListItem className={classes.listItem} divider><DarkMode displayHelperText /></ListItem>
+          </List>
+        </Card>
+        <Card className={classes.card}>
           <CardHeader title={t(`${NAME}.inGame.title`)} subheader={t(`${NAME}.inGame.subheader`)} />
           <List disablePadding>
-            <ListItem className={classes.listItem} divider><Audio displayHelperText /></ListItem>
-            <ListItem className={classes.listItem} divider><DarkMode displayHelperText /></ListItem>
             <ListItem className={classes.listItem} divider><Hints displayHelperText /></ListItem>
             <ListItem className={classes.listItem}><TableTopMode displayHelperText /></ListItem>
           </List>
@@ -78,6 +87,7 @@ function Settings() {
             <ListItem divider><MusicVolume /></ListItem>
             <ListItem divider><SoundVolume /></ListItem>
             <ListItem divider><DialogVolume /></ListItem>
+            <ListItem className={classes.listItem} divider><Audio displayHelperText /></ListItem>
           </List>
         </Card>
         <Button

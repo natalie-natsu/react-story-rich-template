@@ -15,17 +15,25 @@ import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Container from '@material-ui/core//Container';
 import Fab from '@material-ui/core/Fab';
+import Box from '@material-ui/core/Box';
 
 import MenuIcon from '@material-ui/icons/Menu';
 
 import Drawer from 'components/Drawer';
 import Navigation from 'components/Navigation';
+import HideOnScroll from 'components/HideOnScroll';
 
 import tree from 'tree';
 
 const useStyles = makeStyles((theme) => ({
+  '@global': {
+    body: {
+      backgroundColor: theme.palette.background.default,
+    },
+  },
   root: {
     marginBottom: 56, // Navigation height
+    paddingTop: theme.spacing(4),
   },
   appBar: {
     top: 'auto',
@@ -35,10 +43,11 @@ const useStyles = makeStyles((theme) => ({
   navigation: {
     width: '100vw',
   },
-  fab: {
+  topBox: {
     position: 'fixed',
+    width: '100vw',
+    zIndex: 1,
     top: theme.spacing(2),
-    right: theme.spacing(2),
   },
 }));
 
@@ -59,17 +68,24 @@ function Play({ dispatch, history }) {
   return (
     <SnackbarProvider maxSnack={3}>
       <div className={clsx('Game', classes.root)}>
-        <Fab
-          tabIndex={-1}
-          color="secondary"
-          aria-label={t(`${NAME}.toggleDrawer`)}
-          className={classes.fab}
-          onClick={toggleDrawer(true)}
-          onKeyPress={toggleDrawer(true)}
-        >
-          <MenuIcon />
-        </Fab>
-        <Drawer open={drawerState.open} toggle={toggleDrawer} className={classes.drawer} />
+        <Drawer open={drawerState.open} toggle={toggleDrawer} />
+        <HideOnScroll>
+          <Box className={classes.topBox}>
+            <Container maxWidth="sm">
+              <Box display="flex" justifyContent="center">
+                <Fab
+                  color="secondary"
+                  aria-label={t(`${NAME}.toggleDrawer`)}
+                  className={classes.fab}
+                  onClick={toggleDrawer(true)}
+                  onKeyPress={toggleDrawer(true)}
+                >
+                  <MenuIcon />
+                </Fab>
+              </Box>
+            </Container>
+          </Box>
+        </HideOnScroll>
         <Container maxWidth="sm">
           <Story
             dispatch={dispatch}

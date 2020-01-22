@@ -3,7 +3,14 @@ import PropTypes from 'prop-types';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { createMuiTheme, makeStyles, ThemeProvider } from '@material-ui/core/styles';
 
+import themeOptions from './theme';
+
 const useStyles = makeStyles({
+  '@global': {
+    body: {
+      margin: 0,
+    },
+  },
   root: (theme) => ({
     padding: theme.spacing(4, 0),
     width: '100%',
@@ -12,23 +19,17 @@ const useStyles = makeStyles({
   }),
 });
 
-function Layout({ children, dark, themeOptions }) {
+function Layout({ children, dark }) {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
 
-  const type = useMemo(() => {
+  const mode = useMemo(() => {
     let darkMode = prefersDarkMode;
     if (dark !== null) { darkMode = dark; }
 
     return darkMode ? 'dark' : 'light';
   }, [dark, prefersDarkMode]);
 
-  const theme = useMemo(
-    () => createMuiTheme({
-      palette: { type },
-      ...themeOptions,
-    }),
-    [themeOptions, type],
-  );
+  const theme = useMemo(() => createMuiTheme(themeOptions[mode]), [mode]);
 
   const classes = useStyles(theme);
 

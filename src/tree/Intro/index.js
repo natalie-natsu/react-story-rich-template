@@ -1,4 +1,5 @@
 import React from 'react';
+import { Element } from '@react-story-rich/core';
 import ProjectName from '../../components/ProjectName';
 
 const Intro = ['Intro', [
@@ -11,17 +12,16 @@ const Intro = ['Intro', [
   elle me montre le destin qui vous accompagne, vous et votre audace.
   Que dis-je ? Les destins ! Du plus court au plus long et du plus sombre au plus sacré...`,
 
-  `Saurez-vous saisir les opportunités tout en préservant votre nature ?`,
-
-  `Parviendrez-vous à protéger les personnes qui vous sont chères ?`,
-
-  `Assumerez-vous les choix que vous allez faire ?`,
+  `Saurez-vous saisir les opportunités tout en préservant votre nature ?
+  Parviendrez-vous à protéger les personnes qui vous sont chères ?
+  Assumerez-vous les choix que vous allez faire ?`,
 
   `Faites-le sagement, naturellement, égoîstement ou peu importe,
    car rien n'est aussi simple qu'il n'en ait l'air
    et les conséquences de vos actions vous mèneront sur bien des chemins.`,
 
   {
+    component: Element,
     children: (
       <ProjectName
         component="h1"
@@ -57,7 +57,6 @@ const Intro = ['Intro', [
     Vous pouriez vous levez pour ne plus être aveuglée par cette lumière qui tombe sur votre nez.
     Vous pouvez aussi de mettre en garde ou d'avertir ce qui manifestant est venu pour vous.
     Dernière possibilité est de puisez d'en votre instinct primaire pour vous protéger.`,
-    text: true,
     actions: [
       { children: `Se léver` },
       { children: `Mettre en garde` },

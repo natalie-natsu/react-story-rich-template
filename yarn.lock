@@ -1279,10 +1279,10 @@
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.3.tgz#2b5a3ab3f918cca48a8c754c08168e3f03eba61b"
   integrity sha512-shAmDyaQC4H92APFoIaVDHCx5bStIocgvbwQyxPRrbUY20V1EYTbSDchWbuwlMG3V17cprZhA6+78JfB+3DTPw==
 
-"@react-story-rich/core@^2.0.0-beta.2":
-  version "2.0.0-beta.2"
-  resolved "https://registry.yarnpkg.com/@react-story-rich/core/-/core-2.0.0-beta.2.tgz#ee4f7336cca4c3aa15fc75292a7154fed0b5bb4c"
-  integrity sha512-n5qIsYv5In4ggE1MjX66DET8XlJtCluqWHFVf9I8KnU/GHIS7kLJiyobiGN1eEk34hrBk52YkDKvPDmepxUUxw==
+"@react-story-rich/core@^2.0.0-beta.3":
+  version "2.0.0-beta.3"
+  resolved "https://registry.yarnpkg.com/@react-story-rich/core/-/core-2.0.0-beta.3.tgz#9e3c2e8c58c41eed385f5e3d2a3ab2fd6b5f933a"
+  integrity sha512-4ZN8FiUzkuDhNuFvotWsdHzP+LYQp66QouPPsGAyD0IrOgOPBZJDZrwquZt34gdFcsw0uZn3tsf8ntRnXCIa7A==
   dependencies:
     "@babel/runtime" "^7.7.4"
     lodash "^4.17.15"
@@ -1290,10 +1290,10 @@
     react-is "^16.12.0"
     redux "^4.0.4"
 
-"@react-story-rich/ui@^2.0.0-beta.2":
-  version "2.0.0-beta.2"
-  resolved "https://registry.yarnpkg.com/@react-story-rich/ui/-/ui-2.0.0-beta.2.tgz#11b08d1488082ba6f6eb22edecfdc18393539451"
-  integrity sha512-EMlH0iRsIucBs5h0WPlA+mxvOataNxWMyVk474TfYGiVjf5f7l7flRt6dxa7VcUfQalnsN41L5OBAA71mwmVfA==
+"@react-story-rich/ui@^2.0.0-beta.3":
+  version "2.0.0-beta.3"
+  resolved "https://registry.yarnpkg.com/@react-story-rich/ui/-/ui-2.0.0-beta.3.tgz#6cfd0cc673e05f65fe16dc20f49fc8f69d63271f"
+  integrity sha512-a9DtZu7R21Wqe40Vpl3QfO1L2MCIPpx6Sj8YD46bJIJadM5XnXyK3FlGB9RizbIEwXjStJ++4QLC+SgUEhED9A==
   dependencies:
     "@babel/runtime" "^7.7.4"
     clsx "^1.0.4"
