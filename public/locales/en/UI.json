@@ -1,78 +1,77 @@
 {
-  "Drawer":{
-    "titleScreen":"Title screen",
-    "settings":"Settings"
+  "Drawer": {
+    "titleScreen": "Title screen",
+    "settings": "Settings"
   },
-  "Navigation":{
-    "characters":"Companions",
-    "inventory":"Inventory",
-    "journal":"Journal",
-    "menu":"Menu"
-  },
-  "Play":{
-    "toggleDrawer":"Toggle drawer",
-    "start":"Begin your journey"
+  "Navigation": {
+    "characters": "Companions",
+    "inventory": "Inventory",
+    "journal": "Journal",
+    "menu": "Menu"
   },
   "ProjectName": "react-story-rich",
-  "Settings":{
-    "title":"Settings",
-    "subheader":"Change them at any time without altering the game",
-    "goBack":"Go back",
-    "text":{
-      "title":"Text settings",
-      "subheader":"Concerns reading and theme"
+  "Play": {
+    "goDown": "Go down"
+  },
+  "Settings": {
+    "title": "Settings",
+    "subheader": "Change them at any time without altering the game",
+    "goBack": "Go back",
+    "text": {
+      "title": "Text settings",
+      "subheader": "Concerns reading and theme"
     },
-    "inGame":{
-      "title":"In game settings",
-      "subheader":"Concerns specific game behaviors"
+    "inGame": {
+      "title": "In game settings",
+      "subheader": "Concerns specific game behaviors"
     },
-    "volume":{
-      "title":"Audio settings",
-      "subheader":"Edit volumes of each audio types"
+    "volume": {
+      "title": "Audio settings",
+      "subheader": "Edit volumes of each audio types"
     },
-    "Inputs":{
-      "Language":{
-        "label":"Language",
-        "helperText":"Select your language (default is the one of your browser)",
+    "Inputs": {
+      "Language": {
+        "label": "Language",
+        "helperText": "Select your language (default is the one of your browser)",
         "en": "English",
         "fr": "Français"
       },
-      "Audio":{
-        "label":"Audio",
-        "helperText":"Turn all game sounds on or off"
+      "Audio": {
+        "label": "Audio",
+        "helperText": "Turn all game sounds on or off"
       },
-      "DarkMode":{
-        "label":"Dark mode",
-        "helperText":"Turn dark mode on or off"
+      "DarkMode": {
+        "label": "Dark mode",
+        "helperText": "Turn dark mode on or off"
       },
-      "Hints":{
-        "label":"Hints",
-        "helperText":"Activate or deactivate the clues that appear during important choices"
+      "Hints": {
+        "label": "Hints",
+        "helperText": "Activate or deactivate the clues that appear during important choices"
       },
-      "TableTopMode":{
-        "label":"Table top mode",
-        "helperText":"Activate or deactivate the table top mode which displays the results of « rolls of dice » and other information regarding decision making."
+      "TableTopMode": {
+        "label": "Table top mode",
+        "helperText": "Activate or deactivate the table top mode which displays the results of « rolls of dice » and other information regarding decision making."
       },
-      "SoundVolume":{
-        "label":"Sounds & environment"
+      "SoundVolume": {
+        "label": "Sounds & environment"
       },
-      "MusicVolume":{
-        "label":"Music & ambience"
+      "MusicVolume": {
+        "label": "Music & ambience"
       },
-      "DialogVolume":{
-        "label":"Dialogs"
+      "DialogVolume": {
+        "label": "Dialogs"
       }
     }
   },
-  "TitleScreen":{
-    "subheader":"Create flexible narrative games with javascript basics.",
-    "play":"New game",
-    "keepPlaying":"Continue",
-    "settings":"Edit settings",
-    "credits":"See credits",
-    "quit":"Quit the game",
-    "mute":"Toggle all audio events",
-    "darkMode":"Toggle light/dark theme",
-    "sources":"See sources on GitHub"
+  "TitleScreen": {
+    "subheader": "Create flexible narrative games with javascript basics.",
+    "play": "New game",
+    "keepPlaying": "Continue",
+    "settings": "Edit settings",
+    "credits": "See credits",
+    "quit": "Quit the game",
+    "mute": "Toggle all audio events",
+    "darkMode": "Toggle light/dark theme",
+    "sources": "See sources on GitHub"
   }
 }

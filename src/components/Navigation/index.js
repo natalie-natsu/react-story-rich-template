@@ -5,17 +5,31 @@ import { Link, useLocation, matchPath } from 'react-router-dom';
 
 import findIndex from 'lodash/findIndex';
 
+import { makeStyles, useTheme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 
 import PeopleIcon from '@material-ui/icons/People';
 import InboxIcon from '@material-ui/icons/Inbox';
 import BookIcon from '@material-ui/icons/Book';
+import MenuIcon from '@material-ui/icons/Menu';
 
 const NAME = 'Navigation';
 
-function Navigation({ icons, paths, rootPath, ...rest }) {
+const useStyles = makeStyles((theme) => ({
+  menu: {
+    color: theme.palette.secondary.main,
+  },
+}));
+
+function Navigation({ icons, onMenuClick, paths, rootPath, ...rest }) {
+  const classes = useStyles();
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up('sm'));
+
   const { t } = useTranslation('UI');
+
   const location = useLocation();
 
   const getLabel = useCallback((key) => t(`${NAME}.${key}`), [t]);
@@ -25,33 +39,45 @@ function Navigation({ icons, paths, rootPath, ...rest }) {
   })), [location.pathname, paths, rootPath]);
 
   return (
-    <BottomNavigation showLabels value={value} {...rest}>
-      {paths.map((path) => {
-        const label = getLabel(path);
-        const Icon = icons[path];
+    <>
+      <BottomNavigation showLabels value={value} {...rest}>
+        {paths.map((path) => {
+          const label = getLabel(path);
+          const Icon = icons[path];
 
-        return (
+          return (
+            <BottomNavigationAction
+              component={Link}
+              key={`${NAME}.${path}`}
+              label={label}
+              icon={<Icon />}
+              to={`${rootPath}/${path}`}
+            />
+          );
+        })}
+        {(onMenuClick && matches) ? (
           <BottomNavigationAction
-            component={Link}
-            key={`${NAME}.${path}`}
-            label={label}
-            icon={<Icon />}
-            to={`${rootPath}/${path}`}
+            className={classes.menu}
+            label={t(`${NAME}.menu`)}
+            icon={<MenuIcon />}
+            onClick={onMenuClick}
           />
-        );
-      })}
-    </BottomNavigation>
+        ) : null}
+      </BottomNavigation>
+    </>
   );
 }
 
 Navigation.propTypes = {
   icons: PropTypes.objectOf(PropTypes.object),
+  onMenuClick: PropTypes.func,
   paths: PropTypes.arrayOf(PropTypes.string),
   rootPath: PropTypes.string,
 };
 
 Navigation.defaultProps = {
   icons: { characters: PeopleIcon, inventory: InboxIcon, journal: BookIcon },
+  onMenuClick: null,
   paths: ['characters', 'inventory', 'journal'],
   rootPath: '/',
 };

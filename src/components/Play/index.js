@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useMemo, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
@@ -17,7 +17,7 @@ import Container from '@material-ui/core//Container';
 import Fab from '@material-ui/core/Fab';
 import Box from '@material-ui/core/Box';
 
-import MenuIcon from '@material-ui/icons/Menu';
+import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 
 import Drawer from 'components/Drawer';
 import Navigation from 'components/Navigation';
@@ -33,7 +33,6 @@ const useStyles = makeStyles((theme) => ({
   },
   root: {
     marginBottom: 56, // Navigation height
-    paddingTop: theme.spacing(4),
   },
   appBar: {
     top: 'auto',
@@ -54,6 +53,8 @@ const useStyles = makeStyles((theme) => ({
 const NAME = 'Play';
 
 function Play({ dispatch, history }) {
+  const ref = useRef(null);
+
   const classes = useStyles();
   const { t } = useTranslation('UI');
 
@@ -63,24 +64,29 @@ function Play({ dispatch, history }) {
     setDrawerState({ open });
   }, [drawerState.open]);
 
+  const scrollToBottom = useCallback(() => {
+    window.scrollTo({
+      top: ref.current.offsetTop + ref.current.offsetHeight,
+      behavior: 'smooth',
+    });
+  }, [ref]);
+
   const root = useMemo(() => new Tree(tree), []);
 
   return (
     <SnackbarProvider maxSnack={3}>
-      <div className={clsx('Game', classes.root)}>
+      <div ref={ref} className={clsx('Game', classes.root)}>
         <Drawer open={drawerState.open} toggle={toggleDrawer} />
         <HideOnScroll>
           <Box className={classes.topBox}>
             <Container maxWidth="sm">
               <Box display="flex" justifyContent="center">
                 <Fab
-                  color="secondary"
-                  aria-label={t(`${NAME}.toggleDrawer`)}
-                  className={classes.fab}
-                  onClick={toggleDrawer(true)}
-                  onKeyPress={toggleDrawer(true)}
+                  color="primary"
+                  aria-label={t(`${NAME}.goDown`)}
+                  onClick={scrollToBottom}
                 >
-                  <MenuIcon />
+                  <KeyboardArrowDownIcon />
                 </Fab>
               </Box>
             </Container>
@@ -95,7 +101,7 @@ function Play({ dispatch, history }) {
           />
         </Container>
         <AppBar position="fixed" className={classes.appBar} elevation={4}>
-          <Navigation rootPath="/play" className={classes.navigation} />
+          <Navigation rootPath="/play" className={classes.navigation} onMenuClick={toggleDrawer(true)} />
         </AppBar>
       </div>
     </SnackbarProvider>

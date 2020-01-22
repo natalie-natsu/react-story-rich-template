@@ -1,78 +1,77 @@
 {
-  "Drawer":{
-    "titleScreen":"Écran d'acceuil",
-    "settings":"Paramètres"
+  "Drawer": {
+    "titleScreen": "Écran d'acceuil",
+    "settings": "Paramètres"
   },
-  "Navigation":{
-    "characters":"Compagnons",
-    "inventory":"Inventaire",
-    "journal":"Journal",
-    "menu":"Menu"
+  "Navigation": {
+    "characters": "Compagnons",
+    "inventory": "Inventaire",
+    "journal": "Journal",
+    "menu": "Menu"
   },
-  "Play":{
-    "toggleDrawer":"Ouvrir le menu",
-    "start":"Démarrer l'aventure"
+  "Play": {
+    "goDown": "Aller en bas"
   },
   "ProjectName": "react-story-rich",
-  "Settings":{
-    "title":"Paramètres",
-    "subheader":"Changez-les à tout moment sans affecter le cours du jeu",
-    "goBack":"Retour",
-    "text":{
-      "title":"Paramètres de texte",
-      "subheader":"Concerne la lecture et le theme"
+  "Settings": {
+    "title": "Paramètres",
+    "subheader": "Changez-les à tout moment sans affecter le cours du jeu",
+    "goBack": "Retour",
+    "text": {
+      "title": "Paramètres de texte",
+      "subheader": "Concerne la lecture et le theme"
     },
-    "inGame":{
-      "title":"Paramètres de jeu",
-      "subheader":"Concerne tout ce qui affecte à la jouabilité"
+    "inGame": {
+      "title": "Paramètres de jeu",
+      "subheader": "Concerne tout ce qui affecte à la jouabilité"
     },
-    "volume":{
-      "title":"Paramètres audio",
-      "subheader":"Concerne les volumes des différents type d'audio"
+    "volume": {
+      "title": "Paramètres audio",
+      "subheader": "Concerne les volumes des différents type d'audio"
     },
-    "Inputs":{
-      "Language":{
-        "label":"Langue",
-        "helperText":"Sélectionner votre langue (par défaut celle de votre navigateur)",
+    "Inputs": {
+      "Language": {
+        "label": "Langue",
+        "helperText": "Sélectionner votre langue (par défaut celle de votre navigateur)",
         "en": "English",
         "fr": "Français"
       },
-      "Audio":{
-        "label":"Audio",
-        "helperText":"Activer ou désactiver tous les sons du jeu"
+      "Audio": {
+        "label": "Audio",
+        "helperText": "Activer ou désactiver tous les sons du jeu"
       },
-      "DarkMode":{
-        "label":"Mode sombre",
-        "helperText":"Activer ou désactiver le mode sombre"
+      "DarkMode": {
+        "label": "Mode sombre",
+        "helperText": "Activer ou désactiver le mode sombre"
       },
-      "Hints":{
-        "label":"Indices",
-        "helperText":"Activer ou désactiver les indices qui apparaissent lors de choix importants"
+      "Hints": {
+        "label": "Indices",
+        "helperText": "Activer ou désactiver les indices qui apparaissent lors de choix importants"
       },
-      "TableTopMode":{
-        "label":"Mode jeu de rôle",
-        "helperText":"Activer ou désactiver le mode jeu de rôle qui affiche les résultats des « lancés de dés » et autres informations concernant la prise de décision."
+      "TableTopMode": {
+        "label": "Mode jeu de rôle",
+        "helperText": "Activer ou désactiver le mode jeu de rôle qui affiche les résultats des « lancés de dés » et autres informations concernant la prise de décision."
       },
-      "SoundVolume":{
-        "label":"Sons & environnement"
+      "SoundVolume": {
+        "label": "Sons & environnement"
       },
-      "MusicVolume":{
-        "label":"Musiques & ambiance"
+      "MusicVolume": {
+        "label": "Musiques & ambiance"
       },
-      "DialogVolume":{
-        "label":"Dialogues"
+      "DialogVolume": {
+        "label": "Dialogues"
       }
     }
   },
-  "TitleScreen":{
-    "subheader":"Create flexible narrative games with javascript basics.",
-    "play":"Nouvelle partie",
-    "keepPlaying":"Continuer",
-    "settings":"Éditer les paramètres",
-    "credits":"Voir les crédits",
-    "quit":"Quitter le jeu",
-    "mute":"Activer ou désactiver les sons",
-    "darkMode":"Activer ou désactiver le mode sombre",
-    "sources":"Voir le code source sur GitHub"
+  "TitleScreen": {
+    "subheader": "Create flexible narrative games with javascript basics.",
+    "play": "Nouvelle partie",
+    "keepPlaying": "Continuer",
+    "settings": "Éditer les paramètres",
+    "credits": "Voir les crédits",
+    "quit": "Quitter le jeu",
+    "mute": "Activer ou désactiver les sons",
+    "darkMode": "Activer ou désactiver le mode sombre",
+    "sources": "Voir le code source sur GitHub"
   }
 }
