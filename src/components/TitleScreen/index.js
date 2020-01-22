@@ -38,6 +38,8 @@ import Language from 'components/Settings/Inputs/Language';
 
 export const NAME = 'TitleScreen';
 
+const WEB = true; // Change if your are using this in an application (use env)
+
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -69,7 +71,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function TitleScreen({ audio, currentLocation, darkMode, dispatch }) {
+function TitleScreen({ currentLocation, dispatch, settings }) {
   const classes = useStyles();
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up('sm'));
@@ -78,16 +80,18 @@ function TitleScreen({ audio, currentLocation, darkMode, dispatch }) {
 
   const newGame = useMemo(() => currentLocation === 0, [currentLocation]);
   const playIcon = useMemo(() => (newGame ? <PlayArrowIcon /> : <HistoryIcon />), [newGame]);
-  const muteIcon = useMemo(() => (audio ? <VolumeUpIcon /> : <VolumeOffIcon />), [audio]);
-  const darkModeIcon = useMemo(
-    () => (darkMode ? <Brightness4Icon /> : <Brightness7Icon />),
-    [darkMode],
-  );
 
-  const playLinkText = useMemo(
-    () => (newGame ? t(`${NAME}.play`) : t(`${NAME}.keepPlaying`)),
-    [newGame, t],
-  );
+  const muteIcon = useMemo(() => (
+    settings.audio ? <VolumeUpIcon /> : <VolumeOffIcon />
+  ), [settings.audio]);
+
+  const darkModeIcon = useMemo(() => (
+    settings.darkMode ? <Brightness4Icon /> : <Brightness7Icon />),
+  [settings.darkMode]);
+
+  const playLinkText = useMemo(() => (
+    newGame ? t(`${NAME}.play`) : t(`${NAME}.keepPlaying`)
+  ), [newGame, t]);
 
   const handleUpdateSettings = useCallback((setting, oldValue) => () => {
     dispatch(updateSettings({ [setting]: !oldValue }));
@@ -136,14 +140,16 @@ function TitleScreen({ audio, currentLocation, darkMode, dispatch }) {
                 </ListItemAvatar>
                 <ListItemText primary={t(`${NAME}.credits`)} />
               </ListItem>
-              <ListItem button>
-                <ListItemAvatar>
-                  <Avatar>
-                    <PowerSettingsNewIcon />
-                  </Avatar>
-                </ListItemAvatar>
-                <ListItemText primary={t(`${NAME}.quit`)} />
-              </ListItem>
+              {!WEB && (
+                <ListItem button>
+                  <ListItemAvatar>
+                    <Avatar>
+                      <PowerSettingsNewIcon />
+                    </Avatar>
+                  </ListItemAvatar>
+                  <ListItemText primary={t(`${NAME}.quit`)} />
+                </ListItem>
+              )}
             </List>
           </Card>
           <Box display="flex">
@@ -164,16 +170,16 @@ function TitleScreen({ audio, currentLocation, darkMode, dispatch }) {
             <IconButton
               className={classes.action}
               aria-label={t(`${NAME}.darkMode`)}
-              onClick={handleUpdateSettings('darkMode', darkMode)}
-              onKeyPress={handleUpdateSettings('darkMode', darkMode)}
+              onClick={handleUpdateSettings('darkMode', settings.darkMode)}
+              onKeyPress={handleUpdateSettings('darkMode', settings.darkMode)}
             >
               {darkModeIcon}
             </IconButton>
             <IconButton
               className={classes.action}
               aria-label={t(`${NAME}.mute`)}
-              onClick={handleUpdateSettings('audio', audio)}
-              onKeyPress={handleUpdateSettings('audio', audio)}
+              onClick={handleUpdateSettings('audio', settings.audio)}
+              onKeyPress={handleUpdateSettings('audio', settings.audio)}
             >
               {muteIcon}
             </IconButton>
@@ -185,14 +191,15 @@ function TitleScreen({ audio, currentLocation, darkMode, dispatch }) {
 }
 
 TitleScreen.propTypes = {
-  audio: PropTypes.bool.isRequired,
   currentLocation: PropTypes.number.isRequired,
-  darkMode: PropTypes.bool.isRequired,
   dispatch: PropTypes.func.isRequired,
+  settings: PropTypes.shape({
+    audio: PropTypes.bool.isRequired,
+    darkMode: PropTypes.bool.isRequired,
+  }).isRequired,
 };
 
 export default connect((state) => ({
-  audio: state.settings.audio,
-  darkMode: state.settings.darkMode,
+  settings: state.settings,
   currentLocation: last(state.history).to,
 }))(TitleScreen);

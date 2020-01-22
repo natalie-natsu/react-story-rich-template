@@ -29,7 +29,7 @@ module.exports = {
       eventHandlerPropPrefix: 'on',
     }],
     'react/jsx-props-no-spreading': 'off',
-    'react/sort-prop-types': 'error',
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".md"] }],
+    'react/sort-prop-types': 'error',
   },
 };

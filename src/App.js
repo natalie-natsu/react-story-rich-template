@@ -9,13 +9,21 @@ import Settings from 'components/Settings';
 import Credits from 'components/Credits';
 import TitleScreen from 'components/TitleScreen';
 
-function App({ darkMode }) {
+import usePizzicato from 'hooks/usePizzicato';
+import useVolume from 'hooks/useVolume';
+
+import musicPath from './app.mp3';
+
+function App({ settings }) {
+  const pizzicato = usePizzicato({ loop: true, path: musicPath }, () => pizzicato.play());
+  useVolume(pizzicato, { audio: settings.audio, volume: settings.musicVolume });
+
   return (
     <Router>
-      <Layout dark={darkMode}>
+      <Layout dark={settings.darkMode}>
         <Switch>
           <Route path="/play">
-            <Play />
+            <Play music={pizzicato} />
           </Route>
           <Route path="/settings">
             <Settings />
@@ -33,7 +41,11 @@ function App({ darkMode }) {
 }
 
 App.propTypes = {
-  darkMode: PropTypes.bool.isRequired,
+  settings: PropTypes.shape({
+    audio: PropTypes.bool.isRequired,
+    darkMode: PropTypes.bool.isRequired,
+    musicVolume: PropTypes.number.isRequired,
+  }).isRequired,
 };
 
-export default connect((state) => ({ darkMode: state.settings.darkMode }))(App);
+export default connect((state) => ({ settings: state.settings }))(App);
