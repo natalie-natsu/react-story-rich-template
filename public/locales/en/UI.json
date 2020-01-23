@@ -1,4 +1,8 @@
 {
+  "AllowAudio": {
+    "action": "Allow audio",
+    "text": "We need you to allow sounds if you want a better gaming experience. You can still play without sound if you prefer."
+  },
   "Drawer": {
     "titleScreen": "Title screen",
     "settings": "Settings"
@@ -20,7 +24,12 @@
     },
     "inGame": {
       "title": "In game settings",
-      "subheader": "Concerns specific game behaviors"
+      "subheader": "Concerns specific game behaviors",
+      "resetHistory": {
+        "action": "Delete game-save",
+        "text": "You can reset your save at any time, but you will lose your progress in the game. A save is specific to each machine.",
+        "success": "Save deleted!"
+      }
     },
     "volume": {
       "title": "Audio settings",

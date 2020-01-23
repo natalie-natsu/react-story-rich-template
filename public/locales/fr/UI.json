@@ -1,4 +1,8 @@
 {
+  "AllowAudio": {
+    "action": "Autoriser les sons",
+    "text": "Nous avons besoin que vous autorisiez les sons si vous voulez une meilleure expérience de jeu. Vous pouvez quand même jouer sans son si vous préférez."
+  },
   "Drawer": {
     "titleScreen": "Écran d'acceuil",
     "settings": "Paramètres"
@@ -20,7 +24,12 @@
     },
     "inGame": {
       "title": "Paramètres de jeu",
-      "subheader": "Concerne tout ce qui affecte à la jouabilité"
+      "subheader": "Concerne tout ce qui affecte à la jouabilité",
+      "resetHistory": {
+        "action": "Supprimer sauvegarde",
+        "text": "Vous pouvez réinitialiser votre sauvegarde à tout moment, mais vous perdrez votre progression dans le jeu. Une sauvegarde est propre à chaque machine.",
+        "success": "Sauvegarde supprimée !"
+      }
     },
     "volume": {
       "title": "Paramètres audio",
@@ -67,7 +76,7 @@
     "subheader": "Create flexible narrative games with javascript basics.",
     "play": "Nouvelle partie",
     "keepPlaying": "Continuer",
-    "settings": "Éditer les paramètres",
+    "settings": "Modifier les paramètres",
     "credits": "Voir les crédits",
     "quit": "Quitter le jeu",
     "mute": "Activer ou désactiver les sons",

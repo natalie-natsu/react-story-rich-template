@@ -11,7 +11,10 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
+import { SnackbarProvider } from 'notistack';
+
 import App from 'App';
+import Layout from 'components/Layout';
 import Store from 'store';
 
 import 'index.css';
@@ -45,7 +48,11 @@ i18n
 ReactDOM.render(
   <Suspense fallback={<Backdrop open><CircularProgress color="inherit" /></Backdrop>}>
     <Store>
-      <App />
+      <Layout>
+        <SnackbarProvider maxSnack={6} anchorOrigin={{ horizontal: 'right', vertical: 'top' }}>
+          <App />
+        </SnackbarProvider>
+      </Layout>
     </Store>
   </Suspense>,
   document.getElementById('root'),

@@ -12,13 +12,24 @@ import thunk from 'redux-thunk';
 
 import history from '@react-story-rich/core/reducers/history';
 
+import allowAudio from 'store/allowAudio';
+import layout from 'store/layout';
 import settings from 'store/settings';
 
 const middleWares = [thunk];
 if (process.env.NODE_ENV === 'development') { middleWares.push(logger); }
 
-const reducers = combineReducers({ history, settings });
-const persistedReducers = persistReducer({ key: 'root', storage }, reducers);
+const reducers = combineReducers({
+  allowAudio,
+  history,
+  layout,
+  settings,
+});
+const persistedReducers = persistReducer({
+  key: 'root',
+  storage,
+  blacklist: ['allowAudio', 'layout'], // layout will not be persisted
+}, reducers);
 
 export const store = createStore(persistedReducers, compose(applyMiddleware(...middleWares)));
 export const persistor = persistStore(store);

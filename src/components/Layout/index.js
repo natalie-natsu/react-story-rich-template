@@ -1,5 +1,9 @@
 import React, { useMemo } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+
+import isEmpty from 'lodash/isEmpty';
+
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { createMuiTheme, makeStyles, ThemeProvider } from '@material-ui/core/styles';
 
@@ -11,15 +15,18 @@ const useStyles = makeStyles({
       margin: 0,
     },
   },
-  root: (theme) => ({
+  root: ({ theme, backgroundImage }) => ({
     padding: theme.spacing(4, 0),
     width: '100%',
     minHeight: `calc(100vh - ${theme.spacing(4) * 2}px)`,
-    backgroundColor: theme.palette.background.default,
+    background: !isEmpty(backgroundImage) ? `url("${backgroundImage}")` : theme.palette.background.default,
+    backgroundSize: 'cover',
+    backgroundAttachment: 'fixed',
+    backgroundPosition: 'center',
   }),
 });
 
-function Layout({ children, dark }) {
+function Layout({ backgroundImage, children, dark }) {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
 
   const mode = useMemo(() => {
@@ -30,8 +37,7 @@ function Layout({ children, dark }) {
   }, [dark, prefersDarkMode]);
 
   const theme = useMemo(() => createMuiTheme(themeOptions[mode]), [mode]);
-
-  const classes = useStyles(theme);
+  const classes = useStyles({ theme, backgroundImage });
 
   return (
     <ThemeProvider theme={theme}>
@@ -46,6 +52,10 @@ Layout.propTypes = {
   /**
    * A node of your content.
    */
+  backgroundImage: PropTypes.node,
+  /**
+   * A node of your content.
+   */
   children: PropTypes.node.isRequired,
   /**
    * If set to true or false, the mod will be forced to dark/light.
@@ -53,16 +63,14 @@ Layout.propTypes = {
    * according to the browser query setting: `prefers-color-scheme`
    */
   dark: PropTypes.bool,
-  /**
-   * Object of Material UI theme options
-   * @see {@link https://material-ui.com/customization/theming/#theming | MUI Theming documentation}
-   */
-  themeOptions: PropTypes.shape({ palette: PropTypes.object }),
 };
 
 Layout.defaultProps = {
+  backgroundImage: '',
   dark: null,
-  themeOptions: undefined,
 };
 
-export default Layout;
+export default connect((state) => ({
+  ...state.layout,
+  dark: state.settings.darkMode,
+}))(Layout);

@@ -21,7 +21,6 @@ import IconButton from '@material-ui/core/IconButton';
 import Box from '@material-ui/core/Box';
 
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
-import HistoryIcon from '@material-ui/icons/History';
 import SettingsIcon from '@material-ui/icons/Settings';
 import RecentActorsIcon from '@material-ui/icons/RecentActors';
 import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
@@ -35,6 +34,7 @@ import { updateSettings } from 'store/settings';
 
 import ProjectName from 'components/ProjectName';
 import Language from 'components/Settings/Inputs/Language';
+import AllowAudio from '../AllowAudio';
 
 export const NAME = 'TitleScreen';
 
@@ -69,9 +69,12 @@ const useStyles = makeStyles((theme) => ({
   flexGrow: {
     flexGrow: 1,
   },
+  allowAudio: {
+    marginTop: theme.spacing(2),
+  },
 }));
 
-function TitleScreen({ currentLocation, dispatch, settings }) {
+function TitleScreen({ allowAudio, currentLocation, dispatch, settings }) {
   const classes = useStyles();
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up('sm'));
@@ -79,7 +82,6 @@ function TitleScreen({ currentLocation, dispatch, settings }) {
   const { t } = useTranslation('UI');
 
   const newGame = useMemo(() => currentLocation === 0, [currentLocation]);
-  const playIcon = useMemo(() => (newGame ? <PlayArrowIcon /> : <HistoryIcon />), [newGame]);
 
   const muteIcon = useMemo(() => (
     settings.audio ? <VolumeUpIcon /> : <VolumeOffIcon />
@@ -114,12 +116,13 @@ function TitleScreen({ currentLocation, dispatch, settings }) {
           >
             {t(`${NAME}.subheader`)}
           </Typography>
+          <AllowAudio className={classes.allowAudio} />
           <Card className={classes.card}>
             <List component="nav">
               <ListItem button component={Link} to="/play">
                 <ListItemAvatar>
                   <Avatar className={classes.playIcon}>
-                    {playIcon}
+                    <PlayArrowIcon />
                   </Avatar>
                 </ListItemAvatar>
                 <ListItemText primary={playLinkText} />
@@ -175,14 +178,16 @@ function TitleScreen({ currentLocation, dispatch, settings }) {
             >
               {darkModeIcon}
             </IconButton>
-            <IconButton
-              className={classes.action}
-              aria-label={t(`${NAME}.mute`)}
-              onClick={handleUpdateSettings('audio', settings.audio)}
-              onKeyPress={handleUpdateSettings('audio', settings.audio)}
-            >
-              {muteIcon}
-            </IconButton>
+            {allowAudio && (
+              <IconButton
+                className={classes.action}
+                aria-label={t(`${NAME}.mute`)}
+                onClick={handleUpdateSettings('audio', settings.audio)}
+                onKeyPress={handleUpdateSettings('audio', settings.audio)}
+              >
+                {muteIcon}
+              </IconButton>
+            )}
           </Box>
         </Container>
       </div>
@@ -191,6 +196,7 @@ function TitleScreen({ currentLocation, dispatch, settings }) {
 }
 
 TitleScreen.propTypes = {
+  allowAudio: PropTypes.bool.isRequired,
   currentLocation: PropTypes.number.isRequired,
   dispatch: PropTypes.func.isRequired,
   settings: PropTypes.shape({
@@ -200,6 +206,7 @@ TitleScreen.propTypes = {
 };
 
 export default connect((state) => ({
+  allowAudio: state.allowAudio,
   settings: state.settings,
   currentLocation: last(state.history).to,
 }))(TitleScreen);
