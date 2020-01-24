@@ -3,6 +3,9 @@
     "action": "Autoriser les sons",
     "text": "Nous avons besoin que vous autorisiez les sons si vous voulez une meilleure expérience de jeu. Vous pouvez quand même jouer sans son si vous préférez."
   },
+  "App": {
+    "nowPlaying": "Vous écoutez : {{name}}"
+  },
   "Drawer": {
     "titleScreen": "Écran d'acceuil",
     "settings": "Paramètres"

@@ -3,6 +3,9 @@
     "action": "Allow audio",
     "text": "We need you to allow sounds if you want a better gaming experience. You can still play without sound if you prefer."
   },
+  "App": {
+    "nowPlaying": "Now playing: {{name}}"
+  },
   "Drawer": {
     "titleScreen": "Title screen",
     "settings": "Settings"

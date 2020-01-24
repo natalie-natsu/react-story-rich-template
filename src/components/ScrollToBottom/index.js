@@ -1,5 +1,6 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -23,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function ScrollToBottom({ targetRef }) {
+function ScrollToBottom({ targetRef, history }) {
   const classes = useStyles();
   const { t } = useTranslation();
 
@@ -31,12 +32,14 @@ function ScrollToBottom({ targetRef }) {
   const scrollDown = useScrollTrigger();
   const scrollUp = scroll && !scrollDown;
 
-  const scrollToBottom = useCallback(() => {
+  const scrollToBottom = useCallback((behavior) => {
     window.scrollTo({
       top: targetRef.current.offsetTop + targetRef.current.offsetHeight,
-      behavior: 'smooth',
+      behavior,
     });
   }, [targetRef]);
+
+  useEffect(scrollToBottom, [history]);
 
   return (
     <Slide appear={false} direction="down" in={scrollUp}>
@@ -46,7 +49,7 @@ function ScrollToBottom({ targetRef }) {
             <Fab
               color="secondary"
               aria-label={t(`${NAME}.goDown`)}
-              onClick={scrollToBottom}
+              onClick={() => scrollToBottom('smooth')}
             >
               <KeyboardArrowDownIcon />
             </Fab>
@@ -58,10 +61,11 @@ function ScrollToBottom({ targetRef }) {
 }
 
 ScrollToBottom.propTypes = {
+  history: PropTypes.array.isRequired,
   targetRef: PropTypes.PropTypes.oneOfType([
     PropTypes.func,
     PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
   ]).isRequired,
 };
 
-export default ScrollToBottom;
+export default connect((state) => ({ history: state.history }))(ScrollToBottom);

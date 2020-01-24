@@ -53,6 +53,7 @@ const ButtonElement = forwardRef(({
       onKeyPress={handleKeyPress}
       ref={elementRef}
       variant="outlined"
+      disabled={!injected.enabled}
       {...passThroughProps}
     >
       {children}

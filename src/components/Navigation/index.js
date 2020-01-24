@@ -1,12 +1,14 @@
 import React, { useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { useTranslation } from 'react-i18next';
 import { Link, useLocation, matchPath } from 'react-router-dom';
 
+import clsx from 'clsx';
 import findIndex from 'lodash/findIndex';
 
-import { useTheme } from '@material-ui/core/styles';
+import { useTranslation } from 'react-i18next';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
+
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 
@@ -17,7 +19,14 @@ import MenuIcon from '@material-ui/icons/Menu';
 
 const NAME = 'Navigation';
 
+const useStyles = makeStyles(() => ({
+  disabled: {
+    opacity: '0.2',
+  },
+}));
+
 function Navigation({ icons, onMenuClick, paths, rootPath, ...rest }) {
+  const classes = useStyles();
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up('sm'));
 
@@ -37,9 +46,12 @@ function Navigation({ icons, onMenuClick, paths, rootPath, ...rest }) {
         {paths.map((path) => {
           const label = getLabel(path);
           const Icon = icons[path];
+          const disabled = path !== 'journal'; // For the demo
 
           return (
             <BottomNavigationAction
+              className={clsx({ [classes.disabled]: disabled })}
+              disabled={disabled}
               component={Link}
               key={`${NAME}.${path}`}
               label={label}

@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
   listItem: {
     paddingBottom: theme.spacing(3),
   },
-  allowAudio: {
+  alert: {
     marginTop: theme.spacing(2),
   },
 }));
@@ -96,7 +96,7 @@ function Settings({ allowAudio, dispatch }) {
               <ListItem className={classes.listItem} divider><Audio displayHelperText /></ListItem>
             ) : (
               <ListItem className={classes.listItem} divider>
-                <AllowAudio className={classes.allowAudio} />
+                <AllowAudio className={classes.alert} />
               </ListItem>
             )}
           </List>
@@ -105,9 +105,12 @@ function Settings({ allowAudio, dispatch }) {
           <CardHeader title={t(`${NAME}.inGame.title`)} subheader={t(`${NAME}.inGame.subheader`)} />
           <List disablePadding>
             <ListItem className={classes.listItem} divider><Hints displayHelperText /></ListItem>
-            <ListItem className={classes.listItem}><TableTopMode displayHelperText /></ListItem>
+            <ListItem className={classes.listItem} divider>
+              <TableTopMode displayHelperText />
+            </ListItem>
             <ListItem className={classes.listItem}>
               <Alert
+                className={classes.alert}
                 severity="warning"
                 variant="outlined"
                 action={(
